@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CardSentinel | AI Fraud Detection</title>
+    <meta name="description" content="AI-powered real-time credit card fraud detection system using Logistic Regression.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="background-elements">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+    </div>
+
+    <main class="container">
+        <header class="header">
+            <div class="logo">
+                <i data-lucide="shield-check" class="logo-icon"></i>
+                <h1>CardSentinel</h1>
+            </div>
+            <p class="subtitle">Real-time ML fraud detection engine</p>
+        </header>
+
+        <section class="scanner-card">
+            <h2><i data-lucide="activity" class="section-icon"></i> Transaction Scanner</h2>
+            <p class="instruction-text">Enter the 30 secure feature values (Time, V1-V28, Amount) separated by commas to verify the transaction authenticity.</p>
+            
+            <form id="predict-form" class="predict-form">
+                <div class="input-group">
+                    <label for="features-input">Transaction Fingerprint</label>
+                    <div class="textarea-wrapper">
+                        <i data-lucide="fingerprint" class="input-icon"></i>
+                        <textarea id="features-input" name="features" rows="4" placeholder="e.g., 0, -1.359807, -0.072781, 2.536347, ... 149.62" required></textarea>
+                    </div>
+                </div>
+
+                <button type="submit" id="submit-btn" class="btn-primary">
+                    <span><i data-lucide="scan-line"></i> Analyze Transaction</span>
+                </button>
+            </form>
+
+            <div id="result-container" class="result-container hidden">
+                <div id="loading-spinner" class="spinner hidden">
+                    <i data-lucide="loader-2" class="spin-icon"></i> Scanning networks...
+                </div>
+                <div id="prediction-result" class="prediction-result hidden">
+                    <!-- Status will be injected here -->
+                </div>
+            </div>
+        </section>
+        
+        <footer class="footer">
+            <p>Powered by Logistic Regression Model &bull; CardSentinel AI v1.0</p>
+        </footer>
+    </main>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
